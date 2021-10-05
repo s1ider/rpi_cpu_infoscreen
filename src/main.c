@@ -35,7 +35,12 @@ int main(int argc, char *argv[]){
         };
 	};
 
-	if (!update) clear_screen();
+	if (!update) {
+		clear_screen();
+		for (i=1;i<argc;i++) {
+			write_at(0, i -1, argv[i]);
+		}
+	}
 
 	msg = argv[optind];
  	if (msg == NULL) {
@@ -44,7 +49,7 @@ int main(int argc, char *argv[]){
 		return 1;
 	}
     // printf("message: %s at %i, %i\n", msg, x, y);
-    write_at(x, y, msg)
+    write_at(x, y, msg);
 
     return 0;
 };
