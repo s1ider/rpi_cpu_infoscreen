@@ -10,7 +10,7 @@ LIBS=-lwiringPi
 _DEPS = low.h bcm8544.h charset.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o low.o charset.o bcm8544.o lcd_update.o
+_OBJ = main.o low.o charset.o bcm8544.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
@@ -18,9 +18,6 @@ $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 test_bcm8544: $(OBJ)
-	gcc -o $@ $^ $(CFLAGS) $(LIBS)
-
-lcd_update: $(OBJ)
 	gcc -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
